@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaCheckDouble } from "react-icons/fa";
 
@@ -10,7 +10,21 @@ function ToDoList() {
     setInputValue(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmitFrom(e);
+    }
+  };
+
   const upperCase = inputValue.toLowerCase();
+
+  const autoFocus = () => {
+    document.querySelector("input").focus();
+  };
+
+  useEffect(() => {
+    autoFocus();
+  }, [inputValue]);
 
   const handleSubmitFrom = (event) => {
     event.preventDefault();
@@ -38,6 +52,8 @@ function ToDoList() {
               autoComplete="off"
               value={inputValue}
               className="outline-none px-4 py-3 rounded-s-full bg-white"
+              onFocus={autoFocus}
+              onKeyDown={handleKeyDown}
             />
             <button className="bg-teal-500 font-bold cursor-pointer hover:bg-green-500 duration-500 py-3 px-4 rounded-e-full">
               Add Task
