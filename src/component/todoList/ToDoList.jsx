@@ -39,8 +39,8 @@ function ToDoList() {
   };
 
   return (
-    <section>
-      <div className="w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-5">
+    <section className="mx-2">
+      <div className=" max-w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-5">
         <h1 className="font-bold text-4xl mb-4 text-center">ToDo List</h1>
 
         <div className="text-center">
@@ -67,7 +67,7 @@ function ToDoList() {
               return (
                 <li
                   key={index}
-                  className="flex justify-between items-center bg-white w-[60%]  mx-auto py-2 px-4 mb-4 rounded-xl  "
+                  className="flex justify-between items-center bg-white w-[95%] md:w-[60%]  mx-auto py-2 px-4 mb-4 rounded-xl  "
                 >
                   <span className="font-semibold text-lg capitalize ">
                     {index + 1}. {item}
