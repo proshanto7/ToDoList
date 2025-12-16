@@ -10,13 +10,7 @@ function ToDoList() {
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
   };
-  //! Enter key function
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSubmitFrom(e);
-    }
-  };
   // !toUpperCase function
   const upperCase = inputValue.toLowerCase();
   // !autoFocus function
@@ -40,7 +34,7 @@ function ToDoList() {
     setTodoList((prevList) => [...prevList, upperCase]);
     setInputValue("");
   };
-  // todo list delete function
+
 
   //ToDo List time and date
 
@@ -82,7 +76,7 @@ function ToDoList() {
               value={inputValue}
               className="outline-none px-4 py-3 rounded-s-full bg-white"
               onFocus={autoFocus}
-              onKeyDown={handleKeyDown}
+              
             />
             <button className="bg-teal-500 font-bold cursor-pointer hover:bg-green-500 duration-500 py-3 px-4 rounded-e-full">
               Add Task
