@@ -5,6 +5,7 @@ import { FaCheckDouble } from "react-icons/fa";
 function ToDoList() {
   const [inputValue, setInputValue] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const [todoTime, setTodoTime] = useState("");
   // !input value function
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
@@ -39,10 +40,9 @@ function ToDoList() {
     setTodoList((prevList) => [...prevList, upperCase]);
     setInputValue("");
   };
+  // todo list delete function
 
   //ToDo List time and date
-
-  const [todoTime, setTodoTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,6 +55,11 @@ function ToDoList() {
 
     return () => clearInterval(interval);
   }, []);
+  // Todo list delete function
+  const handleDelete = (value) => {
+    const filteredList = todoList.filter((item) => item !== value);
+    setTodoList(filteredList);
+  };
 
   return (
     <section className="mx-2">
@@ -62,7 +67,9 @@ function ToDoList() {
         <h1 className="font-bold text-4xl mb-4 text-center">ToDo List</h1>
 
         <div>
-          <h2 className="text-center font-semibold text-lg mb-4 text-white">{todoTime}</h2>
+          <h2 className="text-center font-semibold text-lg mb-4 text-white">
+            {todoTime}
+          </h2>
         </div>
 
         <div className="text-center">
@@ -83,7 +90,7 @@ function ToDoList() {
           </form>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 text-center">
           <ul>
             {todoList.map((item, index) => {
               return (
@@ -99,7 +106,7 @@ function ToDoList() {
                     <button>
                       <FaCheckDouble className="text-[16px] hover:text-green-600 cursor-pointer duration-500 " />
                     </button>
-                    <button>
+                    <button onClick={() => handleDelete(item)}>
                       <MdDeleteForever className="text-2xl hover:text-red-600 cursor-pointer duration-500 " />
                     </button>
                   </div>
@@ -107,6 +114,13 @@ function ToDoList() {
               );
             })}
           </ul>
+
+          <button
+            onClick={() => setTodoList([])}
+            className="text-lg text-white bg-red-700 py-2 px-5 font-semibold rounded-2xl hover:bg-teal-600 duration-500 cursor-pointer"
+          >
+            Clear All
+          </button>
         </div>
       </div>
     </section>
