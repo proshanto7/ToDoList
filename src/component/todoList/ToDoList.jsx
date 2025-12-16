@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaCheckDouble } from "react-icons/fa";
 
 function ToDoList() {
   const [inputValue, setInputValue] = useState("");
   const [todoList, setTodoList] = useState([]);
-
+  // !input value function
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
   };
+  //! Enter key function
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSubmitFrom(e);
     }
   };
-
+  // !toUpperCase function
   const upperCase = inputValue.toLowerCase();
-
+  // !autoFocus function
   const autoFocus = () => {
     document.querySelector("input").focus();
   };
-
+  // !useEffect for autoFocus
   useEffect(() => {
     autoFocus();
   }, [inputValue]);
 
+  // !form submit function
   const handleSubmitFrom = (event) => {
     event.preventDefault();
     if (!upperCase) return;
@@ -33,15 +35,35 @@ function ToDoList() {
       setInputValue("");
       return;
     }
-
+    // setTodoList function
     setTodoList((prevList) => [...prevList, upperCase]);
     setInputValue("");
   };
+
+  //ToDo List time and date
+
+  const [todoTime, setTodoTime] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const current = new Date();
+      const localDate = current.toLocaleDateString();
+      const localTime = current.toLocaleTimeString();
+
+      setTodoTime(`${localDate} - ${localTime} `);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="mx-2">
       <div className=" max-w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-5">
         <h1 className="font-bold text-4xl mb-4 text-center">ToDo List</h1>
+
+        <div>
+          <h2 className="text-center font-semibold text-lg mb-4 text-white">{todoTime}</h2>
+        </div>
 
         <div className="text-center">
           <form onSubmit={handleSubmitFrom}>
