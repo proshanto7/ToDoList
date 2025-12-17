@@ -30,17 +30,17 @@ function ToDoFrom({ onToDoList }) {
   }, [inputValue]);
   return (
     <>
-      <form onSubmit={handleSubmitFrom}>
+      <form onSubmit={handleSubmitFrom} className="flex justify-center gap-0 " >
         <input
           type="text"
           placeholder="Enter Your Task"
           onChange={handleInputValue}
           autoComplete="off"
           value={inputValue}
-          className="outline-none px-4 py-3 rounded-s-full bg-white"
+          className="outline-none px-2 py-2 sm:px-4 sm:py-3 rounded-s-full bg-white"
           onFocus={autoFocus}
         />
-        <button className="bg-teal-500 font-bold cursor-pointer hover:bg-green-500 duration-500 py-3 px-4 rounded-e-full">
+        <button className="bg-teal-500 font-semibold sm:font-bold cursor-pointer hover:bg-green-500 duration-500 px-2 py-1 sm:py-3 sm:px-4 rounded-e-full">
           Add Task
         </button>
       </form>

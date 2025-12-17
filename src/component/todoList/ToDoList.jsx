@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ToDoFrom from "./todoFrom/ToDoFrom";
 import TodoItems from "./todoListItem/TodoItems";
 import LocalTime from "./localTime/LocalTime";
@@ -22,7 +22,7 @@ function ToDoList() {
 
   return (
     <section className="mx-2">
-      <div className=" max-w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-5">
+      <div className=" max-w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-0 py-5">
         <LocalTime />
 
         <div className="text-center">
@@ -45,7 +45,7 @@ function ToDoList() {
 
           <button
             onClick={() => setTodoList([])}
-            className="text-lg text-white bg-red-700 py-2 px-5 font-semibold rounded-2xl hover:bg-teal-600 duration-500 cursor-pointer"
+            className="sm:text-lg text-white bg-red-700 py-2 px-4 sm:px-5 font-semibold rounded-2xl hover:bg-teal-600 duration-500 cursor-pointer"
           >
             Clear All
           </button>
