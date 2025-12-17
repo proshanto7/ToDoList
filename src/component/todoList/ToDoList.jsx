@@ -21,8 +21,8 @@ function ToDoList() {
   };
 
   return (
-    <section className="mx-2">
-      <div className=" max-w-140 mx-auto bg-gray-500 mt-10 rounded-2xl p-0 py-5">
+    <section className="relative mx-2 bg-[url(img/27.jpg)] bg-no-repeat  bg-cover bg-center  min-h-screen ">
+      <div className=" absolute w-full top-10 lg:left-10 left-[50%] translate-x-[-50%] lg:translate-x-0 max-w-140 mx-auto bg-gray-400 rounded-2xl p-0 py-5">
         <LocalTime />
 
         <div className="text-center">
